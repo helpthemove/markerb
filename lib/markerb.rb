@@ -11,7 +11,7 @@ module Markerb
 
     def call(template, source)
       compiled_source = erb_handler.call(template, source)
-      if template.formats.include?(:html)
+      if template.format == :html
         "Markerb::Markdown.to_html(begin;#{compiled_source};end).html_safe"
       else
         compiled_source
